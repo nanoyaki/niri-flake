@@ -531,13 +531,6 @@
               programs.dconf.enable = nixpkgs.lib.mkDefault true;
               fonts.enableDefaultPackages = nixpkgs.lib.mkDefault true;
             })
-            (nixpkgs.lib.optionalAttrs (options ? home-manager) {
-              home-manager.sharedModules = [
-                self.homeModules.config
-                { programs.niri.package = nixpkgs.lib.mkForce cfg.package; }
-              ]
-              ++ nixpkgs.lib.optionals (options ? stylix) [ self.homeModules.stylix ];
-            })
           ];
         };
       homeModules.niri =
